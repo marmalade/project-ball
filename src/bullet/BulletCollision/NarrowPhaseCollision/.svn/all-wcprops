@@ -1,0 +1,167 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision
+END
+btManifoldPoint.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h
+END
+btGjkConvexCast.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btGjkConvexCast.cpp
+END
+btMinkowskiPenetrationDepthSolver.h
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btMinkowskiPenetrationDepthSolver.h
+END
+btContinuousConvexCollision.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btContinuousConvexCollision.h
+END
+btPersistentManifold.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btPersistentManifold.cpp
+END
+btConvexCast.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btConvexCast.cpp
+END
+btGjkConvexCast.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btGjkConvexCast.h
+END
+btPersistentManifold.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h
+END
+btGjkPairDetector.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btGjkPairDetector.cpp
+END
+btConvexCast.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btConvexCast.h
+END
+btGjkEpa2.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btGjkEpa2.cpp
+END
+btRaycastCallback.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btRaycastCallback.cpp
+END
+btGjkPairDetector.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btGjkPairDetector.h
+END
+btGjkEpa2.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btGjkEpa2.h
+END
+btVoronoiSimplexSolver.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.cpp
+END
+btRaycastCallback.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btRaycastCallback.h
+END
+btSubSimplexConvexCast.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.cpp
+END
+btGjkEpaPenetrationDepthSolver.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btGjkEpaPenetrationDepthSolver.cpp
+END
+btVoronoiSimplexSolver.h
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.h
+END
+btDiscreteCollisionDetectorInterface.h
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h
+END
+btSubSimplexConvexCast.h
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.h
+END
+btGjkEpaPenetrationDepthSolver.h
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btGjkEpaPenetrationDepthSolver.h
+END
+btConvexPenetrationDepthSolver.h
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btConvexPenetrationDepthSolver.h
+END
+btSimplexSolverInterface.h
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btSimplexSolverInterface.h
+END
+btMinkowskiPenetrationDepthSolver.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btMinkowskiPenetrationDepthSolver.cpp
+END
+btContinuousConvexCollision.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btContinuousConvexCollision.cpp
+END
+btPointCollector.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/2/trunk/src/bullet/BulletCollision/NarrowPhaseCollision/btPointCollector.h
+END

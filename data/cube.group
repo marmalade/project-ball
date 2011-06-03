@@ -1,0 +1,8 @@
+// Source file: 
+// Exported By: <Unknown> on 03/24/10 17:39:07
+
+CIwResGroup
+{
+	name "cube"
+	"./models/cube.geo" { userString "level" }
+}

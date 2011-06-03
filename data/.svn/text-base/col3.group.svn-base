@@ -1,0 +1,16 @@
+// Source file: col3.max
+// Exported By: <Unknown> on 06/13/10 01:14:59
+
+CIwResGroup
+{
+	name "col3"
+	"./models/Box01.geo"
+	"./models/Box00.geo"
+	"./models/Box02.geo"
+	"./models/Box11.geo"
+	"./models/Box10.geo"
+	"./models/Box12.geo"
+	"./models/Box21.geo"
+	"./models/Box20.geo"
+	"./models/Box22.geo"
+}

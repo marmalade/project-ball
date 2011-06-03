@@ -1,0 +1,525 @@
+//#define dTRIMESH_ENABLED 1>0
+//#define dTRIMESH_OPCODE 1>0
+
+#include "ode.h"
+#include "s3eAudio.h"
+#include "IwGraphics.h"
+#include "IwModel.h"
+#include "IwModelBuilder.h"
+#include "IwResManager.h"
+#include "IwGxPrint.h"
+#include "s3eKeyboard.h"
+#include "s3eAccelerometer.h"
+
+#include "CCollision.h"
+
+#include "btBulletDynamicsCommon.h"
+
+
+
+typedef CIwVec3 Vector3;
+typedef float dReal;
+static dWorldID world; // World for kinetics calculation
+static dSpaceID space; // Space for collision detection
+
+const int NUM_WALLS = 6;
+static dGeomID ground[NUM_WALLS+1];
+static dJointGroupID contactgroup; // As for contact group details ODE manual
+const dReal radius = 20.0f, mass = 1.0f; // Radius [ m ] and mass [ m ]
+
+CIwModel* s_Model=0;
+CCollision* s_Collision=0;
+CIwMat s_ModelMatrix;
+CIwMat s_OrientationCompensation;
+bool s_Accelerometer;
+bool s_MP3Supported;
+int s_FramesPerSecond = 0;
+
+typedef struct
+{
+	dBodyID body; // For kinetics calculation
+	dGeomID geom; // For collision detection
+} MyObject;
+MyObject ball[2]; // Ball object
+
+const int MAX_CONTACTS = 10;
+char s_Errbuf [1024];
+
+dTriMeshDataID m_pTriMeshData;
+dGeomID geomTrimesh;
+
+uint32* m_colIndices;
+dReal* m_colVertices;
+
+struct StridedVertex {
+  dReal Vertex[3];  // 4th component can be left out, reducing memory usage
+  // Userdata
+};
+int VertexStride = sizeof (StridedVertex);
+
+struct StridedTri {
+  int Indices[3];
+  // Userdata
+};
+int TriStride = sizeof (StridedTri);
+
+#ifdef IW_BUILD_RESOURCES
+void BuildCollision(const char* pUserString, CIwModel* pModel)
+{
+	//check user string to test whether to affect this asset
+	/*if( strcmp(pUserString, "level") != 0 )
+		return*/;
+	
+	// Create a new collision resource and name it after its model partner
+	CCollision* pCollision = new CCollision;
+	pCollision->SetName(pModel->DebugGetName());
+
+	for(uint32 i = 0; i < IwGetModelBuilder()->GetNumFaces(); i++)
+	{
+		pCollision->AddFace(IwGetModelBuilder()->GetFace(i), pModel);
+	}
+
+	// Add the collision resource to IwResManager - it will be serialised as part of the current group.
+	IwGetResManager()->AddRes("CCollision", pCollision);
+}
+#endif
+static void nearCallback (void *data, dGeomID o1, dGeomID o2)
+{
+    //if (dGeomIsSpace (o1) || dGeomIsSpace (o2)) { 
+ 
+    //    // colliding a space with something :
+    //    dSpaceCollide2 (o1, o2, data,&nearCallback); 
+ 
+    //    // collide all geoms internal to the space(s)
+    //    if (dGeomIsSpace (o1))
+    //        dSpaceCollide ((dSpaceID)o1, data, &nearCallback);
+    //    if (dGeomIsSpace (o2))
+    //        dSpaceCollide ((dSpaceID)o2, data, &nearCallback);
+ 
+    //} else {
+
+    // Temporary m_colIndices for each contact
+    int i = 0;
+	int n = 0;
+	const uint8 kcMaxContacts = 5;
+	dContact contact[kcMaxContacts];
+
+	n = dCollide (o1, o2, kcMaxContacts, &contact[0].geom, sizeof(dContact));
+	if (n)
+	{
+		dBodyID b1 = dGeomGetBody(o1);
+		dBodyID b2 = dGeomGetBody(o2);
+
+		for (i = 0; i < n; i++)
+		{
+			contact[i].surface.mode = dContactBounce;
+			//contact[i].surface.mu = 0.9f;
+			contact[i].surface.bounce = 0.8f;
+			//contact[i].surface.bounce_vel = 1.0f;
+			contact[i].surface.soft_cfm = 0.005f;
+			contact[i].surface.soft_erp = 0.3f;//(fSpecialErp?fSpecialErp:0.1f);
+			dJointID c = dJointCreateContact(world, contactgroup, contact + i);
+			dJointAttach(c, b1, b2);
+		}
+	}
+}
+
+
+//------------------------------------------------------------------------------
+// Simulation loop is called and executed each simlation loop.
+// dynamics is calculated by dWorldStep().
+static void simLoop (int pause, float dt)
+{
+	 
+	dSpaceCollide (space, &world, &nearCallback); // Collision decision, most first write this.
+
+	dWorldStep (world, dt);
+	
+	dJointGroupEmpty (contactgroup); // The joint group is designated as the sky
+	//dsDrawSphere (pos, R , radius); // Drawing of sphere
+}
+
+
+
+long UpdateScreenOrientation(void*,void*)
+{
+	int rot = s3eSurfaceGetInt(S3E_SURFACE_DEVICE_BLIT_DIRECTION);
+	if (rot == S3E_SURFACE_BLIT_DIR_NORMAL)
+	{
+		s_OrientationCompensation.SetIdentity();
+	} 
+	else if (rot == S3E_SURFACE_BLIT_DIR_ROT90)
+	{
+		s_OrientationCompensation.SetRotZ(0x0c00);
+	} 
+	else if (rot == S3E_SURFACE_BLIT_DIR_ROT180)
+	{
+		s_OrientationCompensation.SetRotZ(0x800);
+	} 
+	else if (rot == S3E_SURFACE_BLIT_DIR_ROT270)
+	{
+		s_OrientationCompensation.SetRotZ(0x400);
+	}
+	return 0;
+}
+
+void Init()
+{
+	s_Errbuf[0] = 0;
+
+	// Initialise
+	IwGxInit();
+	IwGraphicsInit();
+	dInitODE();
+
+	IW_CLASS_REGISTER(CCollision);
+
+	s_Accelerometer = (S3E_RESULT_SUCCESS == s3eAccelerometerStart());
+	s_MP3Supported = s3eAudioIsCodecSupported(S3E_AUDIO_CODEC_MP3);
+
+	s3eSurfaceRegister(S3E_SURFACE_SCREENSIZE, (s3eCallback) UpdateScreenOrientation, NULL);
+	UpdateScreenOrientation(0,0);
+
+//int32 pixelType = s3eSurfaceGetInt(S3E_SURFACE_PIXEL_TYPE);
+//s3eResult res = s3eSurfaceSetup((s3eSurfacePixelType)pixelType, 0, NULL, S3E_SURFACE_BLIT_DIR_NATIVE );
+
+	world = dWorldCreate ();
+	space = dHashSpaceCreate (0);
+	contactgroup = dJointGroupCreate (0); // Formation of contact group
+
+
+	dWorldSetGravity(world, 0.0f, -2.0f, 0.0f);
+	//dWorldSetCFM(world, 0.0001f);
+	//dWorldSetERP(world, 0.9f);
+	dWorldSetQuickStepNumIterations(world, 20);
+	dWorldSetAngularDamping(world, 0.003f);
+	dWorldSetLinearDamping(world, 0.003f);
+	//dWorldSetContactMaxCorrectingVel(world, 4.0f);
+	//dWorldSetContactSurfaceLayer(world, 0.00001f);
+
+	// Create a ground
+	//if (NUM_WALLS >= 1)
+	ground[0] = dCreatePlane (space,0,0,-1,-100.0f);
+	//if (NUM_WALLS >= 2)
+	ground[1] = dCreatePlane (space,0,0,1,-100.0f);
+	//if (NUM_WALLS >= 3)
+	ground[2] = dCreatePlane (space,0,-1,0,-150.0f);
+	//if (NUM_WALLS >= 4)
+	ground[3] = dCreatePlane (space, 0, 1, 0, -150.0f);
+	//if (NUM_WALLS >= 5)
+	ground[4] = dCreatePlane (space,-1,0,0,-150.0f);
+	//if (NUM_WALLS >= 6)
+	ground[5] = dCreatePlane (space,1,0,0,-150.0f);
+
+	dReal boxSize = 40.0f;
+	ball[0].body = dBodyCreate (world);
+	dMass m1;
+	dMassSetZero (&m1);
+	dMassSetBoxTotal (&m1, mass, boxSize,boxSize,boxSize);
+	
+	dBodySetPosition (ball[0].body , -10.0f, 0.0f, 0.0f);
+
+	ball[0].geom = dCreateBox (space, boxSize, boxSize, boxSize); // Formation of ball geometry
+	//dGeomSetBody (ball[0].geom, ball[0].body); // Setting geom to body
+
+
+
+		ball[1].body = dBodyCreate (world);
+	dMass m2;
+	dMassSetZero (&m2);
+	dMassSetBoxTotal (&m2, mass, boxSize,boxSize,boxSize);
+
+	dBodySetPosition (ball[1].body , -10.0f, -50.0f, 0.0f);
+
+	ball[1].geom = dCreateBox (space,boxSize, boxSize, boxSize); // Formation of ball geometry
+	dGeomSetBody (ball[1].geom, ball[1].body); // Setting geom to body
+
+	dGeomID geomPlatform = dCreateBox (space, 100.0f, 10.0f, 50.0f);
+	dGeomSetPosition(geomPlatform, 0.0f, -30.0f, 0.0f);
+	dGeomSetBody (geomPlatform, 0);
+	
+
+
+	// Set screen clear colour
+	IwGxSetColClear(100, 100, 100, 0);
+
+	// Set field of view
+	IwGxSetPerspMul(0xa0);
+
+	// Set near and far planes
+	IwGxSetFarZNearZ(0x400, 0x10);
+	CIwResGroup* pGroup = 0;
+
+
+
+#ifdef IW_DEBUG 
+	if (IwGetResManager()->BuildResources()) 
+	return; 
+	// Register the model builder callbacks
+	IwGetModelBuilder()->SetPostBuildFn(&BuildCollision);
+#endif 
+
+	pGroup = IwGetResManager()->LoadGroup("Pyramid.group");
+	s_Model = (CIwModel*)pGroup->GetResNamed("Pyramid", IW_GRAPHICS_RESTYPE_MODEL);
+	s_Collision = (CCollision*)pGroup->GetResNamed("Pyramid", "CCollision");
+
+	s_ModelMatrix.SetIdentity();
+
+	uint16 vertcount = s_Collision->GetVertCount();
+	m_colIndices = (uint32*)malloc(vertcount * sizeof(uint32));
+	for (uint32 i = 0; i < vertcount; i+=1)
+	{
+		m_colIndices[i] = i;
+		//m_colIndices[i+1] = i+1;
+		//m_colIndices[i+2] = i;
+	}		
+
+	m_colVertices = (dReal*)malloc(vertcount*3 * sizeof(dReal));
+	for (int i = 0; i<vertcount; i++)
+	{
+		m_colVertices[i*3] = s_Collision->GetVert(i).x;
+		m_colVertices[i*3+1] = s_Collision->GetVert(i).y;
+		m_colVertices[i*3+2] = s_Collision->GetVert(i).z;
+	}
+
+	m_pTriMeshData = dGeomTriMeshDataCreate();
+	dGeomTriMeshDataBuildSingle(m_pTriMeshData, 
+		m_colVertices, 3*sizeof(dReal), vertcount,
+		m_colIndices, vertcount, 3*sizeof(uint32));
+	//dGeomTriMeshDataBuildSimple(m_pTriMeshData, m_colVertices, vertcount, m_colIndices, vertcount/3);
+	//m_pTriMeshData = dGeomTriMeshGetTriMeshDataID(ball[0].geom);
+	//const dTrim_colIndices m_colIndiceses[6] = {2, 1, 0, 3, 2, 0};
+	//	const dVector3 triVert[4] = {
+	//		{ 10.0,  0.0,  10.0},
+	//		{-10.0,  0.0,  10.0},
+	//		{-10.0,  0.0, -10.0},
+	//		{ 10.0,  0.0, -10.0}
+	//	};
+	//dGeomTriMeshDataBuildSimple(m_pTriMeshData, (dReal*)triVert, 4, m_colIndiceses, 6);
+
+	geomTrimesh = dCreateTriMesh(space, m_pTriMeshData, NULL, NULL, NULL);
+	//dMassSetTrimesh (&m1, 100.0f, geomTrimesh);
+	dBodySetMass(ball[0].body, &m1);
+	dGeomSetBody(geomTrimesh, ball[0].body);
+
+	sprintf(s_Errbuf+strlen(s_Errbuf),"init done\n");
+
+	if (s_MP3Supported)
+		s3eAudioPlay("dice.mp3", 1);
+}
+
+void ShutDown()
+{
+	if (s_Accelerometer)
+	{
+		s3eAccelerometerStop();
+		s_Accelerometer = false;
+	}
+	dGeomTriMeshDataDestroy(m_pTriMeshData);
+	dJointGroupDestroy (contactgroup);
+   	dSpaceDestroy (space);
+	dWorldDestroy (world);
+	dCloseODE();
+
+	free(m_colVertices);
+	free(m_colIndices);
+
+	// Terminate
+	s3eAudioStop();
+
+	IwGraphicsTerminate();
+	IwGxTerminate();
+}
+bool Update20ms()
+{
+	simLoop(0, 0.02f);
+	return true;
+}
+bool Update(int dt)
+{
+	//dWorldSetGravity (world,0.0f,0.0f,1.0f);
+	//if (s_Accelerometer)
+	//{
+	//	int32 x = s3eAccelerometerGetX();
+	//	int32 y = s3eAccelerometerGetY();
+	//	int32 z = s3eAccelerometerGetZ();
+
+	//	CIwVec3 r = s_OrientationCompensation.TransposeRotateVec(CIwVec3(x,y,z));
+
+	//	dWorldSetGravity (world,r.x/800.0f,-r.y/800.0f,0.0f);
+	//}
+	//else
+	//{
+	//	dWorldSetGravity (world,1.0f,2.0f,10.0f);
+	//}
+
+
+	//if(s3eKeyboardGetState(s3eKeyUp) && S3E_KEY_STATE_DOWN)
+	//{
+	//	float f[3];
+	//	dWorldImpulseToForce(world, 0.01f, (rand()/16386.0f-1.0f)*60.0f, (rand()/16386.0f-1.0f)*60.0f, (rand()/16386.0f-1.0f)*60.0f, f);
+	//	dBodyAddForce(ball[0].body, f[0], f[1], f[2]);
+	//}
+
+	simLoop(0, 0.2f);
+
+	// Update IwGx state time stamp
+	IwGxTickUpdate();
+	return true;
+}
+CIwMat GetMatrix(dBodyID b)
+{
+	CIwMat s_ModelMatrix;
+	const dReal *pos, *R;
+	pos = dBodyGetPosition (b); // Position
+	R = dBodyGetRotation (b); // Revolution queue
+	s_ModelMatrix.SetIdentity();
+
+	s_ModelMatrix.m[0][0] = IW_FIXED(R[0]);
+	s_ModelMatrix.m[0][1] = IW_FIXED(R[4]);
+	s_ModelMatrix.m[0][2] = IW_FIXED(R[8]);
+
+	s_ModelMatrix.m[1][0] = IW_FIXED(R[1]);
+	s_ModelMatrix.m[1][1] = IW_FIXED(R[5]);
+	s_ModelMatrix.m[1][2] = IW_FIXED(R[9]);
+
+	s_ModelMatrix.m[2][0] = IW_FIXED(R[2]);
+	s_ModelMatrix.m[2][1] = IW_FIXED(R[6]);
+	s_ModelMatrix.m[2][2] = IW_FIXED(R[10]);
+
+	float s_AirplayScale = 0x1000;
+
+	//s_ModelMatrix.m[0][0] = (int32)(R[0] * s_AirplayScale);
+	//s_ModelMatrix.m[0][1] = (int32)(R[4] * s_AirplayScale);
+	//s_ModelMatrix.m[0][2] = (int32)(R[8] * s_AirplayScale);
+
+	//s_ModelMatrix.m[1][0] = (int32)(R[1] * s_AirplayScale);
+	//s_ModelMatrix.m[1][1] = (int32)(R[5] * s_AirplayScale);
+	//s_ModelMatrix.m[1][2] = (int32)(R[9] * s_AirplayScale);
+
+	//s_ModelMatrix.m[2][0] = (int32)(R[2] * s_AirplayScale);
+	//s_ModelMatrix.m[2][1] = (int32)(R[6] * s_AirplayScale);
+	//s_ModelMatrix.m[2][2] = (int32)(R[10] * s_AirplayScale);
+
+	s_ModelMatrix.SetTrans(CIwVec3((int32)(pos[0]),(int32)(pos[1]),(int32)(pos[2])));
+	return s_ModelMatrix;
+}
+void Render()
+{
+	// Set up the view matrix
+	CIwMat view;
+	view.SetIdentity();
+	view = s_OrientationCompensation;
+	//view.SetRotZ(0x800);
+	//view.t.y =  0x80;
+	view.t.z = -200;
+	IwGxSetViewMatrix(&view);
+
+	// Clear the screen
+	IwGxClear(IW_GX_COLOUR_BUFFER_F | IW_GX_DEPTH_BUFFER_F);
+
+	// Start with no lighting
+	//IwGxLightingOff();
+
+	char buf [128];
+	if (s_Accelerometer)
+	{
+		int32 x = s3eAccelerometerGetX();
+		int32 y = s3eAccelerometerGetY();
+		int32 z = s3eAccelerometerGetZ();
+		sprintf(buf,"FPS: %d, Acc X:%d Y:%d Z:%d",s_FramesPerSecond,x,y,z);
+	}
+	else
+	{
+		sprintf(buf,"FPS: %d, No Acc",s_FramesPerSecond);
+	}
+
+	//-------------------------------------------------------------------------
+	// Render the model
+	//-------------------------------------------------------------------------
+	//CIwVec3 lpos (0,0,-100);
+	//IwGxSetLightPos(0,&lpos);
+	//IwGxLightingOn();
+	//IwGxLightingDiffuse(true);
+
+	s_ModelMatrix = GetMatrix(ball[0].body);
+	//s_ModelMatrix.SetIdentity();
+	
+	IwGxSetModelMatrix(&s_ModelMatrix);
+	if (s_Model)
+		s_Model->Render();
+
+	//s_ModelMatrix = GetMatrix(ball[1].body);
+	//IwGxSetModelMatrix(&s_ModelMatrix);
+	//if (s_Model)
+	//	s_Model->Render();
+	
+	CIwVec3 m_vPos = s_ModelMatrix.GetTrans();
+	sprintf(buf,"x: %d %d %d", m_vPos.x, m_vPos.y, m_vPos.z);
+
+	IwGxPrintString(10, 10, buf, true);
+	IwGxPrintString(10, 20, s_Errbuf, true);
+
+	// Paint the cursor keys buttons and prompt text
+	//IwGxPrintString(2, IwGxGetScreenHeight() - 60, "Rotate Model: Arrow Keys");
+
+	// End drawing
+	IwGxFlush();
+
+	// Swap buffers
+	IwGxSwapBuffers();
+}
+
+S3E_MAIN_DECL void IwMain() 
+{
+	Init();
+
+	uint64 now = s3eTimerGetMs(); 
+	uint64 fixedLoop = 0;
+	int fpsLoop = 0;
+	int frames = 0;
+	while (1)
+	{
+		s3eDeviceYield(0);
+		s3eKeyboardUpdate();
+		//s3ePointerUpdate();
+		
+		if	(
+			(s3eKeyboardGetState(s3eKeyEsc) & S3E_KEY_STATE_DOWN) ||
+			(s3eKeyboardGetState(s3eKeyAbsBSK) & S3E_KEY_STATE_DOWN) ||
+			(s3eDeviceCheckQuitRequest())
+			)
+			break;
+		uint64 newTime = s3eTimerGetMs();
+		uint64 deltaTime = newTime - now;
+		now = newTime;
+		//fixedLoop += deltaTime;
+		//fpsLoop+= deltaTime;
+		//++frames;
+
+		if (!Update(deltaTime))
+			return;
+
+		// ограничиваем "тормоза"
+		//if (fixedLoop > 100)
+		//	fixedLoop = 100;
+		//while (fixedLoop >= 20)
+		//{
+		//	if (!Update20ms())
+		//		return;
+		//	fixedLoop-=20;
+		//}
+
+		//if (fpsLoop > 1000)
+		//{
+		//	s_FramesPerSecond = frames/(fpsLoop/1000.0f);
+		//	fpsLoop = 0;
+		//	frames = 0;
+		//}
+		Render();
+	}
+	ShutDown();
+}
+
+
+//-----------------------------------------------------------------------------

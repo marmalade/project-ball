@@ -1,0 +1,179 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath
+END
+btQuickprof.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btQuickprof.h
+END
+btSerializer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btSerializer.cpp
+END
+btAlignedAllocator.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btAlignedAllocator.h
+END
+btScalar.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btScalar.h
+END
+btAabbUtil2.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btAabbUtil2.h
+END
+btMotionState.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btMotionState.h
+END
+btSerializer.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btSerializer.h
+END
+btTransformUtil.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btTransformUtil.h
+END
+btPoolAllocator.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btPoolAllocator.h
+END
+btDefaultMotionState.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btDefaultMotionState.h
+END
+btList.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btList.h
+END
+btTransform.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btTransform.h
+END
+btIDebugDraw.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btIDebugDraw.h
+END
+btStackAlloc.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btStackAlloc.h
+END
+btRandom.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btRandom.h
+END
+btHashMap.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btHashMap.h
+END
+btConvexHull.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btConvexHull.cpp
+END
+btGeometryUtil.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btGeometryUtil.cpp
+END
+btQuaternion.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btQuaternion.h
+END
+btVector3.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btVector3.h
+END
+btQuadWord.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btQuadWord.h
+END
+btConvexHull.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btConvexHull.h
+END
+btAlignedObjectArray.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btAlignedObjectArray.h
+END
+btGeometryUtil.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btGeometryUtil.h
+END
+btMinMax.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btMinMax.h
+END
+btQuickprof.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btQuickprof.cpp
+END
+btAlignedAllocator.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btAlignedAllocator.cpp
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/CMakeLists.txt
+END
+btMatrix3x3.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/2/trunk/src/bullet/LinearMath/btMatrix3x3.h
+END

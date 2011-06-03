@@ -1,0 +1,8 @@
+// Source file: ball.max
+// Exported By: <Unknown> on 05/22/10 21:23:42
+
+CIwResGroup
+{
+	name "ball"
+	"./models/ball.geo"
+}

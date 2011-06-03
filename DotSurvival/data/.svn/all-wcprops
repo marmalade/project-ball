@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/40/trunk/DotSurvival/data
+END
+app.icf
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/40/trunk/DotSurvival/data/app.icf
+END
+development.icf
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/32/trunk/DotSurvival/data/development.icf
+END
+app.config.txt
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/19/trunk/DotSurvival/data/app.config.txt
+END
+test.svg
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/32/trunk/DotSurvival/data/test.svg
+END

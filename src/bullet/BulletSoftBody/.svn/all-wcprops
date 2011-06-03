@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/2/trunk/src/bullet/BulletSoftBody
+END
+btSoftBodyConcaveCollisionAlgorithm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/2/trunk/src/bullet/BulletSoftBody/btSoftBodyConcaveCollisionAlgorithm.cpp
+END
+btSoftBodyHelpers.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/2/trunk/src/bullet/BulletSoftBody/btSoftBodyHelpers.cpp
+END
+btSoftRigidCollisionAlgorithm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/2/trunk/src/bullet/BulletSoftBody/btSoftRigidCollisionAlgorithm.cpp
+END
+btSoftBodyInternals.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/2/trunk/src/bullet/BulletSoftBody/btSoftBodyInternals.h
+END
+btSoftBodyConcaveCollisionAlgorithm.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/2/trunk/src/bullet/BulletSoftBody/btSoftBodyConcaveCollisionAlgorithm.h
+END
+btSoftBodyHelpers.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/2/trunk/src/bullet/BulletSoftBody/btSoftBodyHelpers.h
+END
+btSoftRigidCollisionAlgorithm.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/2/trunk/src/bullet/BulletSoftBody/btSoftRigidCollisionAlgorithm.h
+END
+btSoftBody.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/2/trunk/src/bullet/BulletSoftBody/btSoftBody.cpp
+END
+btSoftSoftCollisionAlgorithm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/2/trunk/src/bullet/BulletSoftBody/btSoftSoftCollisionAlgorithm.cpp
+END
+btSoftRigidDynamicsWorld.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/2/trunk/src/bullet/BulletSoftBody/btSoftRigidDynamicsWorld.cpp
+END
+btSoftBodyRigidBodyCollisionConfiguration.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/2/trunk/src/bullet/BulletSoftBody/btSoftBodyRigidBodyCollisionConfiguration.cpp
+END
+btSoftBody.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/2/trunk/src/bullet/BulletSoftBody/btSoftBody.h
+END
+btSparseSDF.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/2/trunk/src/bullet/BulletSoftBody/btSparseSDF.h
+END
+btSoftSoftCollisionAlgorithm.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/2/trunk/src/bullet/BulletSoftBody/btSoftSoftCollisionAlgorithm.h
+END
+btSoftRigidDynamicsWorld.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/2/trunk/src/bullet/BulletSoftBody/btSoftRigidDynamicsWorld.h
+END
+btSoftBodyRigidBodyCollisionConfiguration.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/2/trunk/src/bullet/BulletSoftBody/btSoftBodyRigidBodyCollisionConfiguration.h
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/2/trunk/src/bullet/BulletSoftBody/CMakeLists.txt
+END

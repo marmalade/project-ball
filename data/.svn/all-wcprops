@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 27
+/svn/!svn/ver/18/trunk/data
+END
+app.icf
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/18/trunk/data/app.icf
+END
+dice.mp3
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/2/trunk/data/dice.mp3
+END
+development.icf
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/18/trunk/data/development.icf
+END
+app.config.txt
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/2/trunk/data/app.config.txt
+END
+d6.group
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/2/trunk/data/d6.group
+END
+ball.group
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/14/trunk/data/ball.group
+END
+collision1.group
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/14/trunk/data/collision1.group
+END
+cube.group
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/2/trunk/data/cube.group
+END
+iwgxscanloopusage.bin
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/2/trunk/data/iwgxscanloopusage.bin
+END
+plane.group
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/2/trunk/data/plane.group
+END
+iwgxinit_bespoke.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/2/trunk/data/iwgxinit_bespoke.cpp
+END
+col3.group
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/18/trunk/data/col3.group
+END

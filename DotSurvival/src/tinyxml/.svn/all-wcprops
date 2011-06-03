@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/37/trunk/DotSurvival/src/tinyxml
+END
+tinyxmlerror.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/37/trunk/DotSurvival/src/tinyxml/tinyxmlerror.cpp
+END
+tinyxmlparser.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/37/trunk/DotSurvival/src/tinyxml/tinyxmlparser.cpp
+END
+tinystr.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/37/trunk/DotSurvival/src/tinyxml/tinystr.h
+END
+tinyxml.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/37/trunk/DotSurvival/src/tinyxml/tinyxml.cpp
+END
+tinyxml.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/37/trunk/DotSurvival/src/tinyxml/tinyxml.h
+END
+tinystr.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/37/trunk/DotSurvival/src/tinyxml/tinystr.cpp
+END

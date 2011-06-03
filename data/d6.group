@@ -1,0 +1,8 @@
+// Source file: d6.max
+// Exported By: <Unknown> on 11/17/09 20:55:29
+
+CIwResGroup
+{
+	name "d6"
+	"./models/Box01.geo"
+}

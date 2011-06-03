@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/42/trunk/DotSurvival/src/poly2tri_mod/sweep
+END
+cdt.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/36/trunk/DotSurvival/src/poly2tri_mod/sweep/cdt.h
+END
+advancing_front.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/42/trunk/DotSurvival/src/poly2tri_mod/sweep/advancing_front.cpp
+END
+sweep.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/42/trunk/DotSurvival/src/poly2tri_mod/sweep/sweep.cpp
+END
+advancing_front.cc
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/34/trunk/DotSurvival/src/poly2tri_mod/sweep/advancing_front.cc
+END
+sweep.cc
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/40/trunk/DotSurvival/src/poly2tri_mod/sweep/sweep.cc
+END
+sweep_context.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/42/trunk/DotSurvival/src/poly2tri_mod/sweep/sweep_context.cpp
+END
+advancing_front.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/34/trunk/DotSurvival/src/poly2tri_mod/sweep/advancing_front.h
+END
+sweep.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/36/trunk/DotSurvival/src/poly2tri_mod/sweep/sweep.h
+END
+cdt.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/42/trunk/DotSurvival/src/poly2tri_mod/sweep/cdt.cpp
+END
+sweep_context.cc
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/36/trunk/DotSurvival/src/poly2tri_mod/sweep/sweep_context.cc
+END
+sweep_context.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/41/trunk/DotSurvival/src/poly2tri_mod/sweep/sweep_context.h
+END
+cdt.cc
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/34/trunk/DotSurvival/src/poly2tri_mod/sweep/cdt.cc
+END

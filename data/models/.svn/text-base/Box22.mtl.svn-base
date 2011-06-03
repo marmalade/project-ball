@@ -1,0 +1,7 @@
+// Source file: col3.max
+CIwMaterial
+{
+	name "DefaultMaterial00"
+	colAmbient {28,28,177}
+	colDiffuse {28,28,177}
+}

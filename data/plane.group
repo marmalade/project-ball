@@ -1,0 +1,8 @@
+// Source file: 
+// Exported By: <Unknown> on 03/23/10 16:05:12
+
+CIwResGroup
+{
+	name "plane"
+	"./models/Plane01.geo"
+}

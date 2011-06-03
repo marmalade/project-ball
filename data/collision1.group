@@ -1,0 +1,8 @@
+// Source file: col.max
+// Exported By: <Unknown> on 05/22/10 20:57:59
+
+CIwResGroup
+{
+	name "collision1"
+	"./models/Col01.geo"
+}

@@ -1,0 +1,72 @@
+#!/usr/bin/env i3d_make_build.py
+options 
+{ 
+	s3e-data-dir="../data" 
+} 
+  
+files
+{
+	(../src)
+	"*.h"
+	"*.cpp"	
+	
+	[Resources]
+	(../data)
+	dice.mp3
+	d6.group
+	(../data/models)
+	Box01.geo
+	Box01.mtl
+	(../data/models/textures)
+	d6.png
+	
+	[bullet]
+	("../src/bullet")
+	"*.h"
+		
+	[bullet LinearMath]
+	("../src/bullet/LinearMath")
+	"*.h"
+	"*.cpp"		
+	
+	[bullet BulletCollision]
+	("../src/bullet/BulletCollision/*")
+	"*.h"
+	"*.cpp"
+	
+	[bullet BulletDynamics]
+	("../src/bullet/BulletDynamics/*")
+	"*.h"
+	"*.cpp"		
+	
+}
+
+includepaths
+{
+	.
+	"../src"
+	"../src/bullet"
+}
+
+subprojects
+{
+	iwgx
+	iwgraphics
+}
+
+assets
+{
+	(../data)
+	dice.mp3
+	(../data-ram/data-gles1)
+	d6.group.bin
+	collision1.group.bin
+}
+deployments 
+{
+	iphone-signing-identity="iPhone Developer"
+	name='ballfall'
+	#iphone-signing-identity="iPhone Developer"
+	#iphone-signing-identity="iPhone Distribution"
+}
+

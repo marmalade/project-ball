@@ -1,0 +1,7 @@
+// Source file: ball.max
+CIwMaterial
+{
+	name "DefaultMaterial00"
+	colAmbient {176,26,26}
+	colDiffuse {176,26,26}
+}

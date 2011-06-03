@@ -1,0 +1,179 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver
+END
+btSequentialImpulseConstraintSolver.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.cpp
+END
+btSolve2LinearConstraint.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btSolve2LinearConstraint.cpp
+END
+btUniversalConstraint.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btUniversalConstraint.cpp
+END
+btSequentialImpulseConstraintSolver.h
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h
+END
+btSolve2LinearConstraint.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btSolve2LinearConstraint.h
+END
+btHinge2Constraint.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btHinge2Constraint.cpp
+END
+btUniversalConstraint.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btUniversalConstraint.h
+END
+btGeneric6DofSpringConstraint.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofSpringConstraint.cpp
+END
+btConstraintSolver.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btConstraintSolver.h
+END
+btConeTwistConstraint.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btConeTwistConstraint.cpp
+END
+btSolverConstraint.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btSolverConstraint.h
+END
+btHinge2Constraint.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btHinge2Constraint.h
+END
+btSliderConstraint.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btSliderConstraint.cpp
+END
+btGeneric6DofSpringConstraint.h
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofSpringConstraint.h
+END
+btConeTwistConstraint.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btConeTwistConstraint.h
+END
+btPoint2PointConstraint.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btPoint2PointConstraint.cpp
+END
+btTypedConstraint.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btTypedConstraint.cpp
+END
+btSliderConstraint.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btSliderConstraint.h
+END
+btJacobianEntry.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btJacobianEntry.h
+END
+btSolverBody.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btSolverBody.h
+END
+btTypedConstraint.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btTypedConstraint.h
+END
+btHingeConstraint.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btHingeConstraint.cpp
+END
+btPoint2PointConstraint.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btPoint2PointConstraint.h
+END
+btContactConstraint.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btContactConstraint.cpp
+END
+btGeneric6DofConstraint.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.cpp
+END
+btHingeConstraint.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btHingeConstraint.h
+END
+btContactConstraint.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btContactConstraint.h
+END
+btGeneric6DofConstraint.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h
+END
+btContactSolverInfo.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/2/trunk/src/bullet/BulletDynamics/ConstraintSolver/btContactSolverInfo.h
+END
